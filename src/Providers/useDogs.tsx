@@ -5,6 +5,7 @@ export const DogsContext = React.createContext([{}]);
 
 export function DogsProvider(props:any) {
     const [dogsState, setDogsState] = useState([{}])  
+    const [counter, setCounter] = useState(true)
 
     useEffect(() => {
         const options= {
@@ -13,10 +14,9 @@ export function DogsProvider(props:any) {
         }
         axios.request(options).then((response) => {
             setDogsState(response.data)
-            console.log('dogsState',response.data)
-            console.log('1 DOG OBJ',response.data[0])
+            setTimeout(() => counter?setCounter(false):setCounter(true), 3000)
         })
-    }, [])
+    }, [counter])
 
     return (
         <DogsContext.Provider value={dogsState}>
