@@ -10,7 +10,7 @@ export function DogsProvider(props:any) {
     useEffect(() => {
         const options= {
             method: 'GET',
-            url: 'http://localhost:8000/dogs'
+            url: 'http://192.168.15.102:8000/dogs'
         }
         axios.request(options).then((response) => {
             setDogsState(response.data)
